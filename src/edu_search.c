@@ -12,21 +12,46 @@
 #define UNUSED(x) (void)(x)
 
 size_t edu_linear_search(const void *ptr, size_t count, size_t size, const void *key, edu_cmp cmp) {
-    UNUSED(ptr);
-    UNUSED(count);
-    UNUSED(size);
-    UNUSED(key);
-    UNUSED(cmp);
-    UNIMPLEMENTED;
-    return 0;
+    if (count <= 0) return 0;
+
+    const char *pos = (const char *)ptr;
+    for (size_t i = 0; i <= count; ++i) {
+        if (cmp(pos + (i * size), key) == 0){
+            return i;
+        }
+    }
+    return count;
+    // UNUSED(ptr);
+    // UNUSED(count);
+    // UNUSED(size);
+    // UNUSED(key);
+    // UNUSED(cmp);
+    // UNIMPLEMENTED;
 }
 
+
 size_t edu_binary_search(const void *ptr, size_t count, size_t size, const void *key, edu_cmp cmp) {
-    UNUSED(ptr);
-    UNUSED(count);
-    UNUSED(size);
-    UNUSED(key);
-    UNUSED(cmp);
-    UNIMPLEMENTED;
-    return 0;
+    if (count <= 0) return 0;
+
+    const char *charptr = (const char *)ptr;
+    size_t mid, left = 0, right = count;
+
+    while (right >= left)
+    {
+        mid = left + (right - left) / 2;
+
+        if (cmp(charptr + (mid * size), key) == 0) return mid;
+
+        else if (cmp(charptr + (mid * size), key) > 0) right = mid - 1;
+
+        else left = mid + 1;
+    }
+
+    return count;
+    // UNUSED(ptr);
+    // UNUSED(count);
+    // UNUSED(size);
+    // UNUSED(key);
+    // UNUSED(cmp);
+    // UNIMPLEMENTED;
 }

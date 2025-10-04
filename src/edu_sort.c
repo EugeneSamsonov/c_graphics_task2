@@ -37,27 +37,60 @@ void edu_bubble_sort(void *ptr, size_t count, size_t size, edu_cmp cmp) {
 }
 
 void edu_selection_sort(void *ptr, size_t count, size_t size, edu_cmp cmp) {
-    UNUSED(ptr);
-    UNUSED(count);
-    UNUSED(size);
-    UNUSED(cmp);
-    UNIMPLEMENTED;
+    char *arr = (char *) ptr;
+
+    for (size_t i = 0; i < count - 1; ++i) {
+        size_t min_idx = i;
+
+        for (size_t j = i + 1; j < count; ++j) {
+            if (cmp(arr + j * size, arr + min_idx * size) < 0) min_idx = j; 
+        }
+
+        if (min_idx != i) edu_swap(arr + i * size, arr + min_idx * size, size); 
+    }
+    // UNUSED(ptr);
+    // UNUSED(count);
+    // UNUSED(size);
+    // UNUSED(cmp);
+    // UNIMPLEMENTED;
 }
 
 void edu_insertion_sort(void *ptr, size_t count, size_t size, edu_cmp cmp) {
-    UNUSED(ptr);
-    UNUSED(count);
-    UNUSED(size);
-    UNUSED(cmp);
-    UNIMPLEMENTED;
+    char *arr = (char *) ptr;
+
+    for (size_t i = 1; i < count; ++i) {
+        for (size_t j = i; j > 0; --j) {
+            if (cmp(arr + (j - 1) * size, arr + j * size) > 0) {
+                edu_swap(arr + (j - 1) * size, arr + j * size, size);
+            }
+            else break;
+        }
+    }
+    // UNUSED(ptr);
+    // UNUSED(count);
+    // UNUSED(size);
+    // UNUSED(cmp);
+    // UNIMPLEMENTED;
 }
 
 void edu_shell_sort(void *ptr, size_t count, size_t size, edu_cmp cmp) {
-    UNUSED(ptr);
-    UNUSED(count);
-    UNUSED(size);
-    UNUSED(cmp);
-    UNIMPLEMENTED;
+    char *arr = (char *) ptr;
+        
+    for (size_t gap = count / 2; gap > 0; gap /= 2) {
+        for (size_t i = gap; i < count; ++i) {
+            for (size_t j = i; j >= gap; --j) {
+                if (cmp(arr + (j - 1) * size, arr + j * size) > 0)
+                    edu_swap(arr + (j - 1) * size, arr + j * size, size);
+                
+                else break;
+            }
+        }
+    }
+    // UNUSED(ptr);
+    // UNUSED(count);
+    // UNUSED(size);
+    // UNUSED(cmp);
+    // UNIMPLEMENTED;
 }
 
 void edu_quick_sort(void *ptr, size_t count, size_t size, edu_cmp cmp) {
