@@ -4,6 +4,7 @@
 # c_graphics_task2
 
 
+
 ```
 mkdir build
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
